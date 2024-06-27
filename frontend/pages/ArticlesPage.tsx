@@ -35,10 +35,10 @@ const ArticlesPage: React.FC = () => {
   return (
     <div>
       <h1>Articles</h1>
-      <Grid container spacing={3}>
+      <Grid container direction="column" spacing={3}>
         {articles.map((article) => (
-          <Grid item xs={12} sm={6} md={4} key={article.id}>
-            <ArticleCard article={article} onClick={() => {}} />
+          <Grid item key={article.id}>
+            <ArticleCard article={article} />
           </Grid>
         ))}
       </Grid>

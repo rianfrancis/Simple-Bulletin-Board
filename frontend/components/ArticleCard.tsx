@@ -1,29 +1,38 @@
+// components/ArticleCard.tsx
 import React from "react";
 import {
+  Box,
   Card,
   CardContent,
   Typography,
   CardActions,
   Button,
-  ButtonBase,
 } from "@mui/material";
-
+import { useRouter } from "next/router";
 import { ArticleInterface } from "../interfaces/articleInterface";
 
 interface ArticleCardProps {
   article: ArticleInterface;
-  onClick: () => void;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push(`/edit-article/${article.id}`);
+  };
+
   return (
-    <ButtonBase onClick={onClick}>
+    <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined">
         <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Article
+          </Typography>
           <Typography variant="h5" component="div">
             {article.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {article.content}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -31,10 +40,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">View</Button>
+          <Button size="small" onClick={handleEdit}>
+            Edit Article
+          </Button>
         </CardActions>
       </Card>
-    </ButtonBase>
+    </Box>
   );
 };
 
