@@ -1,9 +1,9 @@
-// components/ArticleCard.tsx
 import React from "react";
 import {
   Box,
   Card,
   CardContent,
+  CardMedia,
   Typography,
   CardActions,
   Button,
@@ -23,16 +23,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   };
 
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">
+    <Box
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+    >
+      <Card sx={{ maxWidth: 345 }}>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Article
-          </Typography>
-          <Typography variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div">
             {article.title}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography variant="body2" color="text.secondary">
             {article.content}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -43,6 +42,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
           <Button size="small" onClick={handleEdit}>
             Edit Article
           </Button>
+          <Button size="small">Upvote</Button>{" "}
+          <Button size="small">Downvote</Button>{" "}
         </CardActions>
       </Card>
     </Box>

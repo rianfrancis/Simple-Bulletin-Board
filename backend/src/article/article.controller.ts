@@ -41,4 +41,14 @@ export class ArticleController {
   async remove(@Param('id') id: number) {
     return await this.articleService.remove(id);
   }
+
+  @Put('upvote/:id')
+  async upvote(@Param('id') id: number) {
+    return await this.articleService.upvote(id);
+  }
+
+  @Put('downvote/:id')
+  async downvote(@Param('id') id: number) {
+    return await this.articleService.downvote(id);
+  }
 }

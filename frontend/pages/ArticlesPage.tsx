@@ -33,7 +33,7 @@ const ArticlesPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="display flex justify-center items-center">
       <h1>Articles</h1>
       <Grid container direction="column" spacing={3}>
         {articles.map((article) => (

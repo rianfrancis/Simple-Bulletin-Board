@@ -39,6 +39,6 @@ export const updateArticle = async (
     console.log("Article updated successfully:", article);
   } catch (error) {
     console.error("Error updating article:", error);
-    throw error; // Rethrow the error to handle it upstream
+    throw error;
   }
 };

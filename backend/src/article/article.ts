@@ -21,4 +21,5 @@ export class Article {
 
   @Column({ default: 0 })
   votes: number;
+  downvotes: any;
 }

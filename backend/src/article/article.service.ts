@@ -52,4 +52,24 @@ export class ArticleService {
     }
     return { message: 'Article deleted successfully' };
   }
+
+  async upvote(id: number): Promise<{ message: string; article: Article }> {
+    const article = await this.articleRepository.findOne({ where: { id } });
+    if (!article) {
+      throw new NotFoundException(`Article with ID ${id} not found`);
+    }
+    article.votes++; // Assuming 'upvotes' is a field in your Article entity
+    await this.articleRepository.save(article);
+    return { message: 'Article upvoted successfully', article };
+  }
+
+  async downvote(id: number): Promise<{ message: string; article: Article }> {
+    const article = await this.articleRepository.findOne({ where: { id } });
+    if (!article) {
+      throw new NotFoundException(`Article with ID ${id} not found`);
+    }
+    article.downvotes++; // Assuming 'downvotes' is a field in your Article entity
+    await this.articleRepository.save(article);
+    return { message: 'Article downvoted successfully', article };
+  }
 }
