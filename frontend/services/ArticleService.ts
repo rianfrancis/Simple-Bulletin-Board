@@ -92,3 +92,30 @@ export const downvote = async (id: number): Promise<void> => {
     throw error;
   }
 };
+
+export const createArticle = async ({
+  title,
+  content,
+}: {
+  title: string;
+  content: string;
+}): Promise<void> => {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, content }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create article");
+    }
+
+    console.log("Article created successfully:", { title, content });
+  } catch (error) {
+    console.error("Error creating article:", error);
+    throw error;
+  }
+};

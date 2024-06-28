@@ -58,7 +58,7 @@ export class ArticleService {
     if (!article) {
       throw new NotFoundException(`Article with ID ${id} not found`);
     }
-    article.votes++; // Assuming 'upvotes' is a field in your Article entity
+    article.votes++;
     await this.articleRepository.save(article);
     return { message: 'Article upvoted successfully', article };
   }
@@ -68,7 +68,7 @@ export class ArticleService {
     if (!article) {
       throw new NotFoundException(`Article with ID ${id} not found`);
     }
-    article.downvotes++; // Assuming 'downvotes' is a field in your Article entity
+    article.votes--;
     await this.articleRepository.save(article);
     return { message: 'Article downvoted successfully', article };
   }
