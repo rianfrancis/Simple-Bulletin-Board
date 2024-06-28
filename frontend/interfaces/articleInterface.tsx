@@ -3,4 +3,5 @@ export interface ArticleInterface {
   title: string;
   content: string;
   createdDate: string;
+  votes: number;
 }

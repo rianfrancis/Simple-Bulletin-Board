@@ -34,14 +34,16 @@ const ArticlesPage: React.FC = () => {
 
   return (
     <div className="display flex justify-center items-center">
-      <h1>Articles</h1>
-      <Grid container direction="column" spacing={3}>
-        {articles.map((article) => (
-          <Grid item key={article.id}>
-            <ArticleCard article={article} />
-          </Grid>
-        ))}
-      </Grid>
+      <h1>Simple Bulletin Board</h1>
+      <div>
+        <Grid container direction="column" spacing={3}>
+          {articles.map((article) => (
+            <Grid item key={article.id}>
+              <ArticleCard article={article} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </div>
   );
 };
