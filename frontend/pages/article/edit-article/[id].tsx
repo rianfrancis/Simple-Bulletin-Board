@@ -47,7 +47,7 @@ const EditArticle: React.FC = () => {
       const updatedArticle = { ...article, title, content };
       try {
         await updateArticle(updatedArticle);
-        router.push("/home");
+        router.push(`/article/${article.id}`);
       } catch (error) {
         console.error("Error updating article:", error);
       }

@@ -96,10 +96,10 @@ const ArticlePage: React.FC = () => {
         container
         justifyContent="center"
         alignItems="center"
-        style={{ minHeight: "50vh" }}
+        sx={{ mt: "100px" }}
       >
         <Grid item xs={12} md={8} lg={6}>
-          <Card>
+          <Card sx={{ boxShadow: 5, margin: "auto" }}>
             <CardContent>
               <Typography
                 variant="h5"

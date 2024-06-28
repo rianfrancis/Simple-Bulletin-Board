@@ -44,6 +44,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
     }
   };
 
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   const formattedDate = format(new Date(article.createdDate), "MMMM dd, yyyy");
 
   return (
@@ -62,7 +69,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
         <Card
           sx={{
             width: 345,
-
+            mt: 2,
+            boxShadow: 5,
             display: "flex",
             flexDirection: "column",
           }}
@@ -79,7 +87,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
                   textDecoration: "none",
                 }}
               >
-                {article.title}
+                {truncateText(article.title, 100)}
               </Typography>
               <Typography
                 variant="body2"
@@ -91,7 +99,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
                   textDecoration: "none",
                 }}
               >
-                {article.content}
+                {truncateText(article.content, 100)}
               </Typography>
               <Typography
                 variant="body2"

@@ -10,7 +10,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar: React.FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "#7289da" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
