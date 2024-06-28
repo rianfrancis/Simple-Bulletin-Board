@@ -6,11 +6,13 @@ import {
   Typography,
   CardActions,
   Button,
+  CardActionArea,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import { ArticleInterface } from "../interfaces/articleInterface";
-import { upvote, downvote } from "../services/ArticleService"; // Import upvote and downvote functions
+import { upvote, downvote } from "../services/ArticleService";
+import Link from "next/link";
 
 interface ArticleCardProps {
   article: ArticleInterface;
@@ -21,7 +23,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   const [votes, setVotes] = useState(article.votes);
 
   const handleEdit = () => {
-    router.push(`/edit-article/${article.id}`);
+    router.push(`/article/edit-article/${article.id}`);
   };
 
   const handleUpvote = async () => {
@@ -46,35 +48,90 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
 
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        "& a": {
+          textDecoration: "none",
+          color: "inherit",
+        },
+      }}
     >
-      <Card sx={{ maxWidth: 345 }}>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {article.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {article.content}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Created on: {formattedDate}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Votes: {votes}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" onClick={handleEdit}>
-            Edit Article
-          </Button>
-          <Button size="small" onClick={handleUpvote}>
-            Upvote
-          </Button>
-          <Button size="small" onClick={handleDownvote}>
-            Downvote
-          </Button>
-        </CardActions>
-      </Card>
+      <Link href={`/article/${article.id}`} passHref>
+        <Card
+          sx={{
+            width: 345,
+
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <CardActionArea sx={{ flexGrow: 1 }}>
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                sx={{
+                  fontFamily: "montserrat",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                {article.title}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{
+                  fontFamily: "montserrat",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                {article.content}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{
+                  fontFamily: "montserrat",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Created on: {formattedDate}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{
+                  fontFamily: "montserrat",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Votes: {votes}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions sx={{ justifyContent: "center" }}>
+            <Button size="small" onClick={handleEdit}>
+              Edit Article
+            </Button>
+            <Button size="small" onClick={handleUpvote}>
+              Upvote
+            </Button>
+            <Button size="small" onClick={handleDownvote}>
+              Downvote
+            </Button>
+          </CardActions>
+        </Card>
+      </Link>
     </Box>
   );
 };

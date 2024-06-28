@@ -92,6 +92,22 @@ export const downvote = async (id: number): Promise<void> => {
     throw error;
   }
 };
+export const deleteArticle = async (id: number): Promise<void> => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete article");
+    }
+
+    console.log("Article deleted successfully:", id);
+  } catch (error) {
+    console.error("Error deleting article:", error);
+    throw error;
+  }
+};
 
 export const createArticle = async ({
   title,

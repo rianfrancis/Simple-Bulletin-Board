@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import CreateArticleForm from "../components/CreateArticleForm";
+import CreateArticleForm from "../../components/CreateArticleForm";
 
 const CreateArticlePage: React.FC = () => {
   return (

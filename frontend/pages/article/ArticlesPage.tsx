@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import ArticleCard from "../components/ArticleCard";
-import { ArticleInterface } from "../interfaces/articleInterface";
-import { fetchArticles } from "../services/ArticleService";
+import ArticleCard from "../../components/ArticleCard";
+import { ArticleInterface } from "../../interfaces/articleInterface";
+import { fetchArticles } from "../../services/ArticleService";
 
 const ArticlesPage: React.FC = () => {
   const [articles, setArticles] = useState<ArticleInterface[]>([]);
@@ -33,17 +33,14 @@ const ArticlesPage: React.FC = () => {
   }
 
   return (
-    <div className="display flex justify-center items-center">
-      <h1>Simple Bulletin Board</h1>
-      <div>
-        <Grid container direction="column" spacing={3}>
-          {articles.map((article) => (
-            <Grid item key={article.id}>
-              <ArticleCard article={article} />
-            </Grid>
-          ))}
-        </Grid>
-      </div>
+    <div style={{ margin: "20px auto", maxWidth: 800, padding: "0 20px" }}>
+      <Grid container spacing={3}>
+        {articles.map((article) => (
+          <Grid item key={article.id} xs={12}>
+            <ArticleCard article={article} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };
